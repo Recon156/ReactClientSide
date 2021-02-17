@@ -10,12 +10,8 @@ function App() {
   const [notes, setNotes] = useState([]);
   // const [id ,setId] = useState();
 
-  let port = process.env.PORT;
-  if (port == null || port == "") {
-    port = "http://localhost:3001";
-  }
 
-  Axios.post(`${port}/api/insert`, {
+  Axios.post("https://my-note-app-98.herokuapp.com//api/insert", {
     title: newNote.title,
     content: newNote.content
   }).then("Susccessful insert");
@@ -23,7 +19,7 @@ function App() {
 
 
   useEffect(() => {
-    Axios.get(`${port}/api/get`).then((result) => {
+    Axios.get("https://my-note-app-98.herokuapp.com//api/get").then((result) => {
       setNotes(result.data)
     })
   }, [AddNote]);
@@ -40,7 +36,7 @@ function App() {
 
   function deleteNote(id) {
 
-    Axios.delete(`${port}/api/delete/${id}`);
+    Axios.delete(`https://my-note-app-98.herokuapp.com//api/delete/${id}`);
     // setNotes(prevNotes => {
     //   return prevNotes.filter((noteItem, index) => {
     //     return index !== Id;
